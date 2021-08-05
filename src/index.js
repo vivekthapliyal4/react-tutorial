@@ -4,6 +4,12 @@ import reactDom from "react-dom";
 // CSS
 import "./index.css";
 
+import {books} from './Books'
+
+import Book from "./Book";
+
+// import { greeting } from "./testing/testing";
+
 // stateless functional component
 // always return JSX
 
@@ -17,57 +23,19 @@ import "./index.css";
 
 // setup vars
 
-const firstBook = {
-  img: "https://images-na.ssl-images-amazon.com/images/I/51tiopcLhuS._SX258_BO1,204,203,200_.jpg",
-  title: "As a man thinketh",
-  author: "James Allen",
-};
-
-const secondBook = {
-  img: "https://images-eu.ssl-images-amazon.com/images/I/41xME4JDBFS._SX198_BO1,204,203,200_QL40_FMwebp_.jpg",
-  title: "Metamorphosis",
-  author: "Franz Kafka",
-};
 
 function BookList() {
   return (
     <section className="booklist">
-      <Book
-        img={firstBook.img}
-        title={firstBook.title}
-        author={firstBook.author}
-      >
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-          Necessitatibus autem laboriosam dolorum odio similique quasi quisquam
-          doloribus repudiandae minima iste?
-        </p>
-      </Book>
-      <Book
-        img={secondBook.img}
-        title={secondBook.title}
-        author={secondBook.author}
-      />
-      <Book />
-      <Book />
+      {books.map((book) => {
+        return(
+          <Book key={book.id} {...book} />
+        )
+        
+      })}
     </section>
   );
 }
-
-const Book = (props) => {
-  const {img, title, author} = props;
-  return (
-    <article className="book">
-      <img src={img} alt="bookimage" />
-      <h1>{title}</h1>
-      <h4>{author}</h4>
-      {props.children}
-
-      {/* {console.log(props)} */}
-      {/* {<p>{let x = 6} </p>} */}
-    </article>
-  );
-};
 
 // const Image = () => (
 //   <img
